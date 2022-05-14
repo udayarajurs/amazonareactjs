@@ -4,11 +4,12 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import seedRouter from './routes/seedRouter.js';
 import productRoutes from './routes/productRoutes.js';
+import userRouter from './routes/userRoutes.js';
 const app = express();
 
 dotenv.config();
 
- app.use('/api/seed', seedRouter)
+
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
@@ -18,12 +19,19 @@ mongoose.connect(process.env.MONGODB_URI)
   });
 
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
  
 
 
-
+app.use('/api/seed', seedRouter)
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRouter);
 
+
+app.use((err, req, res, next) => {
+  res.status(500).send({message: err.message}); 
+});
 
 
 
