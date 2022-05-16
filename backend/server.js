@@ -43,3 +43,7 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`serve at http://localhost:${port}`);
 });
+
+// MONGODB_URI=mongodb+srv://amazona:12345@amazona.krava.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+// JWT_SECRET=somthingsecret
+// PAYPAL_CLIENT_ID=ATkqXf1PQQ0fMYFM2NxMRTO4Km_Gtv_vWBh0ZPuVeqE8H3GduHu5KVkeqKPabK7AF8bYGknmK3sX-7i7
